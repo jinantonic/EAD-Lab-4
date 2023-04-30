@@ -1,15 +1,27 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+let currentId = 0;
 
-mongoose.connect('mongodb://localhost/products', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDB'))
+mongoose.connect('mongodb://127.0.0.1:27017/products', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        Product.findOne({}, {}, { sort: { '_id' : -1 } })
+        .then(product => { currentId = product.id; })
+    })
     .catch(err => console.error('Error connecting to MongoDB:', err));
 
 const ProductSchema = new mongoose.Schema({
-    name: String,
+    id: Number,
+    title: String,
+    description: String,
     price: Number,
-    description: String
+    discountPercentage: Number,
+    rating: Number,
+    stock: Number,
+    brand: String,
+    category: String,
+    thumbnail: String,
+    images: [String]
 });
 
 const Product = mongoose.model('Product', ProductSchema);
@@ -17,9 +29,12 @@ const Product = mongoose.model('Product', ProductSchema);
 app.use(express.static('public'));
 app.use(express.json());
 
+
 app.get('/products', async (req, res) => {
     try {
-        const products = await Product.find({});
+        const productFilter = JSON.parse(decodeURIComponent(req.query["productName"]));
+        console.log(productFilter);
+        const products = await Product.find(productFilter);
         res.json(products);
     } catch (err) {
         console.error(err);
@@ -29,8 +44,11 @@ app.get('/products', async (req, res) => {
 
 app.post('/products', async (req, res) => {
     try {
-        const product = new Product(req.body);
-        await product.save();
+        const product = {
+            id: ++currentId,
+            ...req.body
+        };
+        Product.create(product);
         res.status(201).json({ uri: `/products/${product._id}` });
     } catch (err) {
         console.error(err);
@@ -40,9 +58,9 @@ app.post('/products', async (req, res) => {
 
 app.put('/products/:id', async (req, res) => {
     try {
-        const result = await Product.updateOne(
+        const result = await Product.findOneAndUpdate(
             { _id: req.params.id },
-            { $set: req.body }
+            req.body
         );
         if (result.modifiedCount === 1) {
             res.json({ uri: `/products/${req.params.id}` });
@@ -57,8 +75,9 @@ app.put('/products/:id', async (req, res) => {
 
 app.delete('/products/:id', async (req, res) => {
     try {
-        const result = await Product.deleteOne({ _id: req.params.id });
+        const result = await Product.findOneAndDelete({ _id: req.params.id });
         if (result.deletedCount === 1) {
+            currentId--;
             res.sendStatus(204);
         } else {
             res.status(404).send('Product not found!');

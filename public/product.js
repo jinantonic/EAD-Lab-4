@@ -2,39 +2,24 @@
     $(document).ready(function() { // When the document is ready
         $("#display-h2").hide(); // Hide the h2 element
         $("#table-header").hide(); // Hide the table header
-        
-        const currentColor = getCookie("colourId"); // Get the cookie
-        if (currentColor) { // If the cookie exists
-            $("#ColourId").val(currentColor); // Set the value of the ColourId input box
-            getColour(currentColor); // Get the colour details
-            $('#productIdNav').val(currentColor); // Set the value of the input box between arrows
-        } // end if
 
-        const currentBackground = getCookie("colourBackground"); // Get the cookie
-        if(currentBackground) { // If the cookie exists 
-            $('body').css('background-color', currentBackground); // Change the background color of the entire page
-        } // end if
-
-        function getColour(colourId) { 
-            $.get(`/colours/${colourId}`, function(colour) { // Get the colour with the specified id
-                $('#hexString').val(colour.hexString); // Update the display with the colour details
-                $('#RGB').val("RGB(" + colour.rgb.r + ", " + colour.rgb.g + ", " + colour.rgb.b + ")");
-                $('#HSL').val("HSL(" + Math.floor(colour.hsl.h) + ", " + colour.hsl.s + "%, " + colour.hsl.l + "%)");
-                $('#Name').val(colour.name);
-                $('#display-product').css('background-color', colour.hexString); // Set the background colour of the display-colour div
-                $('#productIdNav').val(colourId); // Set the value of the input box between arrows
-                
-                document.cookie = "colourId=" + colourId + "; expires=Fri, 31 Dec 9999 23:59:59 GMT"; // Set the cookie
-
+        function getProduct(productName) { // Get the product from the database
+            $.get(`/products?productName=${encodeURIComponent(JSON.stringify(productName))}`, function(products) { 
+                console.log(products);
+                $("#Brand").val(products[0].brand);
+                $("#Price").val(products[0].price);
+                $("#display-product").attr("src", products[0].thumbnail);
             }).fail(function() { // If the colour is not found
-                alert('Colour not found!'); // Display an error message
+                alert('Product not found!'); // Display an error message
                 $(location).attr('href','404.html'); // Redirect to the 404 page
             }); // end get
-        } // end getColour
+        } // end getProduct
 
-        $("#btn1").click(function() { // When the "show colour" button is clicked
-            const colourId = $('#ColourId').val(); // Get the value of the ColourId input box
-            getColour(colourId); // Call the getColour function
+        $("#btn1").click(function() { 
+            // const productId = $('#Id').val(); 
+            const productName = $('#Name').val(); 
+            console.log("productName" + productName);
+            getProduct({title:productName}); 
         }); // End Button 1
 
         $("#btn2").click(function() { // When the "insert colour" button is clicked
