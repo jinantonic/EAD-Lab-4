@@ -1,5 +1,3 @@
-// index.js - server-side JavaScript for the Colour API web app
-
 const express = require('express'); // Import the Express web framework
 const fs = require('fs'); // Import the file system module
 const path = require('path'); // Import the path module

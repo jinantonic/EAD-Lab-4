@@ -67,8 +67,8 @@ h2 {
 .input-box {
     display: flex;
     flex-direction: column;
-    width: 60%;
-    padding: 0px 15px 50px; /* Top, Right & Left, Bottom */
+    width: 100%;
+    padding: 30px 70px 50px; /* Top, Right & Left, Bottom */
 }
   
 .input-row { 
@@ -87,12 +87,10 @@ h2 {
     flex-grow: 1; /* Allow the input to grow to fill remaining space */
 }
 
-
-
 .display-product {
-    width: 115px;
-    height: 115px;
-    border: 1.5px solid black;
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
     border-radius: 3px;
     margin-bottom: 10px;
 }
@@ -112,7 +110,7 @@ h2 {
     margin: 0 5px;
 }
 
-#btnPrev, #btnNext {
+#btnPrev, #btnFirst, #btnNext, #btnLast {
     background-color: #a8b2bd;
     color: white;
     border: none;
@@ -121,7 +119,7 @@ h2 {
     padding: 2px 7px; /* Top & Bottom, Right & Left  */
 }
 
-#btnPrev:hover, #btnNext:hover {
+#btnPrev:hover, #btnFirst:hover, #btnNext:hover, #btnLast:hover {
     background-color: #D3D6DB;
     color: #a8b2bd;
 }

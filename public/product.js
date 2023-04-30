@@ -1,5 +1,3 @@
-// colour.js - client-side JavaScript for the Colour API web app 
-
 (function ($) {
     $(document).ready(function() { // When the document is ready
         $("#display-h2").hide(); // Hide the h2 element
