@@ -62,6 +62,9 @@
           }
           
           $("#btn1").click(function() {
+            $("#display-h2").show(); // Show the table header
+            $("#table-header").show(); // Show the table header
+            
             const searchParams = {
                 title: $("#title").val(),
                 category: $("#category").val(),
