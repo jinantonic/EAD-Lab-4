@@ -40,31 +40,39 @@
                 $("#table-content tbody").empty(); // clear the table content
           
                 $.each(products, function(index, product) {
-                  const row = `<tr>
-                                <td>${product.id}</td>
-                                <td>${product.title}</td>
-                                <td>${product.description}</td>
-                                <td>${product.price}</td>
-                                <td>${product.discountPercentage}</td>
-                                <td>${product.rating}</td>
-                                <td>${product.stock}</td>
-                                <td>${product.brand}</td>
-                                <td>${product.category}</td>
-                                <td><img src="${product.thumbnail}" alt="${product.title}" /></td>
-                                <td>${product.images.join(", ")}</td>
-                              </tr>`; // create the table row
-                  $("#table-content tbody").append(row); // add the row to the table
+                    const row = `<tr data-productid="${product.id}">
+                                    <td>${product.id}</td>
+                                    <td>${product.title}</td>
+                                    <td>${product.price}</td>
+                                    <td>${product.discountPercentage}</td>
+                                    <td>${product.rating}</td>
+                                    <td>${product.stock}</td>
+                                    <td>${product.brand}</td>
+                                    <td>${product.category}</td>
+                                    <td><img src="${product.thumbnail}" alt="${product.title}" /></td>
+                                </tr>`;
+                    $("#table-content tbody").append(row); // add the row to the table
+
                 });
+
+                // When a table row is clicked, redirect to productDetail.html with the corresponding product ID
+                $("#table-content tbody").on("click", "tr", function() {
+                    const productId = $(this).attr("data-productid");
+                    // console.log("productId1: " + productId)
+                    window.location.href = `productDetail.html?id=${productId}`;
+                });
+
+
             }).fail(function() {
               alert("Product not found!");
               // $(location).attr("href", "404.html");
             });
-          }
-          
-          $("#btn1").click(function() {
+        }
+
+        $("#btn1").click(function() {
             $("#display-h2").show(); // Show the table header
             $("#table-header").show(); // Show the table header
-            
+
             const searchParams = {
                 title: $("#title").val(),
                 category: $("#category").val(),
@@ -77,6 +85,17 @@
             getProduct(searchParams);
         });
           
-          
+        $('#btn2').on('click', function() {
+        });
+
+        $('#btn3').on('click', function() {
+        });
+
+        $('#btn4').on('click', function() {
+        });
+
+        $('#btn5').on('click', function() {
+            window.location.href = 'http://localhost:8080/about.html';
+        });  
     }); // End document ready
 })(jQuery); // End jQuery

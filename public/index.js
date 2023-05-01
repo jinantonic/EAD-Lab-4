@@ -37,28 +37,15 @@ app.get('/products', async (req, res) => {
         let query = {};
         if (req.query["allCheck"] === 'true') {
             const andFilter = [];
-            if (productFilter.title !== '') {
-                andFilter.push({ title: { $regex: productFilter.title, $options: "i" }});
-            }
-            if (productFilter.category !== '') {
-                andFilter.push({ category: { $regex: productFilter.category, $options: "i" }});
-            }
-            if (productFilter.price !== '') {
-                andFilter.push({ price: { $lte: productFilter.price }});
-            }
-            if (productFilter.discountPercentage !== '') {
-                andFilter.push({ discountPercentage: { $gte: productFilter.discountPercentage }});
-            }
-            if (productFilter.rating !== '') {
-                andFilter.push({ rating: { $gte: productFilter.rating }});
-            }
-            if (productFilter.stock !== '') {
-                andFilter.push({ stock: { $gte: productFilter.stock }});
-            }
-            if (productFilter.brand !== '') {
-                andFilter.push({ brand: { $regex: productFilter.brand, $options: "i" }});
-            }
+            if (productFilter.title !== '') { andFilter.push({ title: { $regex: productFilter.title, $options: "i" }}); }
+            if (productFilter.category !== '') { andFilter.push({ category: { $regex: productFilter.category, $options: "i" }}); }
+            if (productFilter.price !== '') { andFilter.push({ price: { $lte: productFilter.price }}); }
+            if (productFilter.discountPercentage !== '') { andFilter.push({ discountPercentage: { $gte: productFilter.discountPercentage }}); }
+            if (productFilter.rating !== '') { andFilter.push({ rating: { $gte: productFilter.rating }}); }
+            if (productFilter.stock !== '') { andFilter.push({ stock: { $gte: productFilter.stock }}); }
+            if (productFilter.brand !== '') { andFilter.push({ brand: { $regex: productFilter.brand, $options: "i" }}); }
             query = { $and: andFilter };
+            
         } else if (productFilter.brand !== '') {
             query = { brand: { $regex: productFilter.brand, $options: "i" }};
         } else if (productFilter.category !== '') {
