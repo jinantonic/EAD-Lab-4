@@ -65,9 +65,9 @@ h2 {
 }
 
 .input-box {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
-    width: 100%;
+    /* width: 100%; */
     padding: 30px 70px 50px; /* Top, Right & Left, Bottom */
 }
   
