@@ -36,7 +36,7 @@ This is the first look at the website. The main page consists of **4 buttons** o
 </br>
 
 ![Sketch](images/radio1.png)
-When the radio button is clicked, it will display the corresponding search box so that the user can search for the products using any option.
+When the radio button is clicked, it will display the corresponding search box so that the user can search for the products using any filter.
 
 </br>
 
