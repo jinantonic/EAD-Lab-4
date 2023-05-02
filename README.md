@@ -32,13 +32,24 @@ Once it is running successfully, go to http://localhost:8080/index.html on the b
 </br>
 
 ![Sketch](images/home.png)
-This is the first look of the website. The main page consists of **8 buttons** on the left side, and the **colour input boxes** along with the **colour display box** on the right side. Below them, there are **left** and **right arrow buttons** for navigating and the **input box** to enter the colour id manually.
+This is the first look of the website. The main page consists of **4 buttons** on the left side, and the **radio buttons** on the right side. 
+
+</br>
+
+![Sketch](images/radio1.png)
+When the radio button is clicked, it will display the corresponding search box so that the user can search for the products using any option.
+
+</br>
+
+![Sketch](images/radio2.png)
+Clicking the **All** radio button enables users to search for products that meet specific criteria. 
 
 </br>
 
 ### 1st Button
 ![Sketch](images/1st.png)
-Enter the colour id and click the **Show Colour** button. It retrieves and displays the details of the colour with the specified colour id.
+![Sketch](images/1st-table.png)
+Clicking the **Show Table** button will retrieve and display all the products along with their information on the table.
 
 </br>
 
