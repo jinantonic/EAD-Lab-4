@@ -144,7 +144,7 @@ It will display a **success** message when there is no error, and an **error** m
 
 </br>
 
-![Sketch](images/pd-result.png)
+![Sketch](images/pd-result1.png)
 Then click the **show table** button on the homepage and the product is modified using the new details.
 
 </br>
