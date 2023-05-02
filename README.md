@@ -31,12 +31,12 @@ Once it is running successfully, go to http://localhost:8080/index.html on the b
 </br>
 
 ![Sketch](images/home.png)
-This is the first look at the website. The main page consists of **4 buttons** on the left side, and the **8 radio buttons** on the right side. 
+This is the first look at the website. The main page consists of **4 buttons** on the left side, and **8 radio buttons** on the right side. 
 
 </br>
 
 ![Sketch](images/radio1.png)
-When the radio button is clicked, it will display the corresponding search box so that the user can search for the products using any filter.
+When the radio button is clicked, it will display the corresponding search box so that the user can search for the products using any search filter.
 
 </br>
 
@@ -76,6 +76,11 @@ It also allows the users to search for products using multiple search options by
 
 ![Sketch](images/2nd-table3.png)
 As you can see, it is returning the correct result of products whose Brand contains "App", Category contains "Sm" and the Price is less than 900. 
+
+</br>
+
+![Sketch](images/2nd-table4.png)
+If there is no matching product, it displays an error message along with the empty table below.
 
 </br>
 

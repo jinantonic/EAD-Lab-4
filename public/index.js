@@ -64,8 +64,12 @@
                     window.location.href = `indexDetail.html?id=${productId}`; // redirect to productDetail.html with the product ID
                 }); // end tr click
 
+                if (products.length === 0) { // If no products were found,
+                    alert("No product found! Please enter valid product information."); // alert the user
+                }
+                
             }).fail(function() { // If the product is not found,
-                alert("No product found. Please enter a valid product information."); // alert the user
+                alert("No product found. Please enter valid product information."); // alert the user
                 $(location).attr("href", "404.html"); // redirect to 404.html
             }); // end get
         } // end getProduct()
