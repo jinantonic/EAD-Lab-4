@@ -9,8 +9,11 @@
         $("#btn2").hide(); // Hide the elements
         $("#btn3").hide(); 
         $("#imageLabel").hide();
+        $("#id").hide();
+        $("#row-id").hide();
         $("#display-product").hide();
         $(".nav-box").hide();
+
 
         if(productId) { // If the product ID is present in the URL parameters,
             editCheck = true; 
@@ -32,6 +35,8 @@
                 $("#btn2").show(); // Show the elements
                 $("#btn3").show();
                 $("#btn4").show();
+                $("#row-id").show();
+                $("#id").show();
                 $("#imageLabel").show();
                 $("#display-product").show();
                 $(".nav-box").show();
@@ -82,12 +87,19 @@
         $('#btn2').on('click', function() { // When "Update" button is clicked,
             updatedProduct = getProductDetails(); // get the product details
 
+            // Check if any input fields are empty
+            if (updatedProduct.title === "" || updatedProduct.brand === "" || updatedProduct.price === "" || updatedProduct.category === "" || updatedProduct.description === "" || updatedProduct.discount === "" || updatedProduct.stock === "" || updatedProduct.thumbnail === "" || updatedProduct.imageText === "" || updatedProduct.rating === "") {
+                alert("Error! Please fill out all fields.");
+                return;
+            }
+
             $.ajax({ // Update the product details
                 url: `/products?id=${encodeURIComponent(JSON.stringify(productId))}`,
                 method: 'PUT',
                 data: updatedProduct,
                 success: function(result) {
                     alert("Product " + productId + " modified successfully.");
+                    window.location.href = `./`; // redirect to the home page
                 }, // end success
                 error: function(err) {
                     console.error(err); // handle errors or display error messages to the user
@@ -112,12 +124,18 @@
         $('#btn4').on('click', function() { // When "Insert" button is clicked,
             newProduct = getProductDetails(); // get the product details
 
+            if (newProduct.title === "" || newProduct.brand === "" || newProduct.price === "" || newProduct.category === "" || newProduct.description === "" || newProduct.discount === "" || newProduct.stock === "" || newProduct.rating === "") {
+                alert("Error! Please fill out all fields to insert a new product.");
+                return;
+            }
+
             $.ajax({ // Insert the product
                 url: `/products`,
                 method: 'POST',
                 data: newProduct,
                 success: function(result) {
                     alert("New product inserted successfully."); 
+                    window.location.href = `./`; // redirect to the home page
                 }, // end success
                 error: function(err) {
                     console.error(err);

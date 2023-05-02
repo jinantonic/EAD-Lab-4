@@ -82,32 +82,45 @@ As you can see, it is returning the correct result of products whose Brand conta
 
 #### Insert Product Button
 ![Sketch](images/3rd.png)
-![Sketch](images/3rd-page.png)
 Then we move on to the **Insert Product** button, which will direct you to **indexDetail.html** page.
 
+</br>
+
 ### Insert product page
-
-
-</br>
-
-![Sketch](images/3rd-msg.png)</br>
-After you get the success message, you can **refresh** the homepage and click **Show Table**. 
+![Sketch](images/id-home.png)
+This is the **indexDetail.html** page, which allows users to enter new product to the table.
 
 </br>
 
-![Sketch](images/3rd-green-1.png)
-![Sketch](images/3rd-green-2.png)
-You can see the colour **Green** was modified as **GreenGreen** with the new details.
+![Sketch](images/id-input.png)
+Enter the details and click **Insert** button.
 
 </br>
 
-### 4th Button
-![Sketch](images/4th.png)
-Moving onto the **Remove Colour** button. Enter the colour id and select the **Show Colour** button to display the colour that you would like to remove. Check the displayed colour and click the **Remove Colour** button to remove it.  
+![Sketch](images/id-msg1.png)</br>
+![Sketch](images/id-msg2.png)
+It will displays a success message when there is no error, and an error message if there is an error. After clicking **ok**, it will redirect you to the main home page. 
 
 </br>
 
-![Sketch](images/4th-msg.png)</br>
+![Sketch](images/id-result.png)
+Then click the **show table** button on the homepage and the new product is added to the end of the table.
+
+</br>
+
+#### Home & About this Page Button
+![Sketch](images/about.png)
+On the insert product page, the rest buttons are **Home** and **About this Page**. They are pretty straightfoward, the **Home** button will bring you to the main page and **About this Page** will bring you to the page where explains briefly about the page.
+
+</br>
+
+### Product detail page
+![Sketch](images/pd.png)
+Going back to the main page, clicking the table row will bring you to the product page corresponding to the table row's product detail. You can click any shell on the table row.
+
+</br>
+
+![Sketch](images/pd-detail.png)</br>
 After you get the success message, you can **refresh** the homepage and click **Show Table**.
 
 </br>
