@@ -1,16 +1,16 @@
-const express = require('express'); // import express
-const app = express(); // create express app
-const mongoose = require('mongoose'); // import mongoose
-let currentId = 0; // current ID of the product
+const express = require('express'); // Import express
+const app = express(); // Create express app
+const mongoose = require('mongoose'); // Import mongoose
+let currentId = 0; // Current ID of the product
 
-mongoose.connect('mongodb://127.0.0.1:27017/products', { useNewUrlParser: true, useUnifiedTopology: true }) // connect to the database
-    .then(() => { // if the connection is successful,
+mongoose.connect('mongodb://127.0.0.1:27017/products', { useNewUrlParser: true, useUnifiedTopology: true }) // Connect to the database
+    .then(() => { // If the connection is successful,
         Product.findOne({}, {}, { sort: { '_id' : -1 } }) // find the last product
         .then(product => { currentId = product.id; }) // set the current ID to the last product's ID
     }) // end then
-    .catch(err => console.error('Error connecting to MongoDB:', err)); // handle errors
+    .catch(err => console.error('Error connecting to MongoDB:', err)); // Handle errors
 
-const ProductSchema = new mongoose.Schema({ // define the product schema
+const ProductSchema = new mongoose.Schema({ // Define the product schema
     id: Number,
     title: String,
     brand: String,
@@ -24,24 +24,25 @@ const ProductSchema = new mongoose.Schema({ // define the product schema
     images: [String]
 }); // end ProductSchema
  
-const Product = mongoose.model('Product', ProductSchema); // create the Product model
+const Product = mongoose.model('Product', ProductSchema); // Create the Product model
 
-app.use(express.urlencoded({ // enable parsing of the body of POST requests
+app.use(express.urlencoded({ // Enable parsing of the body of POST requests
     extended: true
 })) // end use
 
-app.use(express.static('public')); // serve static files from the public folder
-app.use(express.json()); // enable parsing of the body of POST requests
+app.use(express.static('public')); // Serve static files from the public folder
+app.use(express.json()); // Enable parsing of the body of POST requests
 
 app.get('/products', async (req, res) => { // GET /products
     try { 
-        let query = {}; // define the query
-        if(req.query["searchParams"]) { // if there are search parameters,
+        let query = {}; // Define the query
+        if(req.query["searchParams"]) { // If there are search parameters,
             const productFilter = JSON.parse(decodeURIComponent(req.query["searchParams"])); // parse the search parameters
             
-            if (req.query["allCheck"] === 'true') { // if allCheck is true,
+            if (req.query["allCheck"] === 'true') { // If allCheck is true,
                 const andFilter = []; // define the and filter
-                // if the search parameters are not empty, push the search parameters to the and filter
+
+                // If the search parameters are not empty, push the search parameters to the and filter
                 if (productFilter.title !== '') { andFilter.push({ title: { $regex: productFilter.title, $options: "i" }}); }
                 if (productFilter.category !== '') { andFilter.push({ category: { $regex: productFilter.category, $options: "i" }}); }
                 if (productFilter.price !== '') { andFilter.push({ price: { $lte: productFilter.price }}); }
@@ -49,9 +50,10 @@ app.get('/products', async (req, res) => { // GET /products
                 if (productFilter.rating !== '') { andFilter.push({ rating: { $gte: productFilter.rating }}); }
                 if (productFilter.stock !== '') { andFilter.push({ stock: { $gte: productFilter.stock }}); }
                 if (productFilter.brand !== '') { andFilter.push({ brand: { $regex: productFilter.brand, $options: "i" }}); }
-                query = { $and: andFilter }; // set the query to the and filter
                 
-            } else if (productFilter.brand !== '') { // if the brand is not empty,
+                query = { $and: andFilter }; // Set the query to the and filter
+                
+            } else if (productFilter.brand !== '') { // If the brand is not empty,
                 query = { brand: { $regex: productFilter.brand, $options: "i" }}; // set the query to the brand
             } else if (productFilter.category !== '') { 
                 query = { category: { $regex: productFilter.category, $options: "i" }};
@@ -66,29 +68,31 @@ app.get('/products', async (req, res) => { // GET /products
             } else if (productFilter.stock !== '') {
                 query = { stock: { $gte: productFilter.stock }};
             } // end inner if else if
-        } else if (req.query["productId"]) { // if there is a product ID,
-            if (req.query["productId"] !== '') { // if the product ID is not empty,
+
+        } else if (req.query["productId"]) { // If there is a product ID,
+            if (req.query["productId"] !== '') { // If the product ID is not empty,
                 query = {id:req.query["productId"]}; // set the query to the product ID
             } // end inner if
         } // end outer if else if
 
-        const products = await Product.find(query); // find the products that match the query
-        res.json(products); // send the products as a JSON response
+        const products = await Product.find(query); // Find the products that match the query
+        res.json(products); // Send the products as a JSON response
 
     } catch (err) {
-        console.error(err); // log the error
-        res.status(500).send('Internal server error!'); // send an error response
+        console.error(err); // Log the error
+        res.status(500).send('Internal server error!'); // Send an error response
     } // end try catch
 }); // end get
 
 app.post('/products', async (req, res) => { // POST /products
     try { 
-        const product = { // create a new product
+        const product = { // Create a new product
             id: ++currentId,
             ...req.body
         }; // end product
-        Product.create(product); // create the product
-        res.status(201).json({ uri: `/products/${product._id}` }); // send the URI of the created product as a response
+
+        Product.create(product); // Create the product
+        res.status(201).json({ uri: `/products/${product._id}` }); // Send the URI of the created product as a response
 
     } catch (err) {
         console.error(err);
@@ -98,12 +102,12 @@ app.post('/products', async (req, res) => { // POST /products
 
 app.put('/products', async (req, res) => { // PUT /products
     try {
-        const productId = JSON.parse(decodeURIComponent(req.query["id"])); // parse the product ID
-        const result = await Product.findOneAndUpdate( // update the product
+        const productId = JSON.parse(decodeURIComponent(req.query["id"])); // Parse the product ID
+        const result = await Product.findOneAndUpdate( // Update the product
             {id:productId},
             req.body
         ); // end findOneAndUpdate
-        res.json({ uri: `/products/${req.params.id}` }); // send the URI of the updated product as a response
+        res.json({ uri: `/products/${req.params.id}` }); // Send the URI of the updated product as a response
             
     } catch (err) {
         console.error(err);
@@ -113,8 +117,8 @@ app.put('/products', async (req, res) => { // PUT /products
 
 app.delete('/products/:id', async (req, res) => { // DELETE /products/:id
     try {
-        const result = await Product.findOneAndDelete({ id: req.params.id }); // delete the product
-        res.sendStatus(204); // send a 204 response
+        const result = await Product.findOneAndDelete({ id: req.params.id }); // Delete the product
+        res.sendStatus(204); // Send a 204 response
 
     } catch (err) {
         console.error(err);
@@ -122,7 +126,7 @@ app.delete('/products/:id', async (req, res) => { // DELETE /products/:id
     } // end try catch
 }); // end delete
 
-const port = 8080; // define the port
-app.listen(port, () => { // listen for requests
-    console.log(`Server running on port ${port}.`); // log the port
+const port = 8080; // Define the port
+app.listen(port, () => { // Listen for requests
+    console.log(`Server running on port ${port}.`); // Log the port
 }); // end listen

@@ -44,7 +44,7 @@
                 $("#table-content").hide(); // Hide the table until it is fully populated
                 $("#table-content tbody").empty(); // Clear the table content
           
-                $.each(products, function(index, product) { // for each product,
+                $.each(products, function(index, product) { // For each product,
                     const row = `<tr data-productid="${product.id}">
                                     <td>${product.id}</td>
                                     <td>${product.title}</td>
@@ -56,21 +56,21 @@
                                     <td>${product.category}</td>
                                     <td><img src="${product.thumbnail}" alt="${product.title}" /></td>
                                 </tr>`; // create a table row
-                    $("#table-content tbody").append(row); // add the row to the table
+                    $("#table-content tbody").append(row); // Add the row to the table
                 }); // end each
 
                 $("#table-content tbody").on("click", "tr", function() { // When a table row is clicked,
                     const productId = $(this).attr("data-productid"); // get the product ID
-                    window.location.href = `indexDetail.html?id=${productId}`; // redirect to productDetail.html with the product ID
+                    window.location.href = `indexDetail.html?id=${productId}`; // Redirect to indexDetail.html with the product ID
                 }); // end tr click
 
                 if (products.length === 0) { // If no products were found,
-                    alert("No product found! Please enter valid product information."); // alert the user
+                    alert("No product found! Please enter valid product information."); // Alert the user
                 }
                 
-            }).fail(function() { // If the product is not found,
-                alert("No product found. Please enter valid product information."); // alert the user
-                $(location).attr("href", "404.html"); // redirect to 404.html
+            }).fail(function() { // If the get request fails,
+                alert("Product not found!"); // Alert the user
+                $(location).attr("href", "404.html"); // Redirect to 404.html
             }); // end get
         } // end getProduct()
 
@@ -91,12 +91,12 @@
                                     <td>${product.category}</td>
                                     <td><img src="${product.thumbnail}" alt="${product.title}" /></td>
                                 </tr>`;
-                    $("#table-content tbody").append(row); // add the row to the table
+                    $("#table-content tbody").append(row);
                 }); // end each
 
                 $("#table-content tbody").on("click", "tr", function() {
-                    const productId = $(this).attr("data-productid"); // get the product ID
-                    window.location.href = `indexDetail.html?id=${productId}`; // redirect to productDetail.html with the product ID
+                    const productId = $(this).attr("data-productid");
+                    window.location.href = `indexDetail.html?id=${productId}`;
                 }); // end tr click
 
             }).fail(function() { 
@@ -106,7 +106,7 @@
         } // end getAllProduct()
 
         $("#button1").click(function() { // When the "Show Table" button is clicked,
-            $("#loader").show(); // Show the elements
+            $("#loader").show(); // Show the loader
             $("#loader-text").show();
 
             setTimeout(function() {
@@ -128,7 +128,7 @@
             getAllProduct(); // Get all products
         }); // end button 1
 
-        $("#button2").click(function() {
+        $("#button2").click(function() { // When the "Search Product" button is clicked,
             $("#loader").show();
             $("#loader-text").show();
 
@@ -162,7 +162,7 @@
         }); // end button 2
         
         $('#button3').on('click', function() { // When the "Insert Product" button is clicked,
-            window.location.href = 'http://localhost:8080/indexDetail.html'; // redirect to productDetail.html
+            window.location.href = 'http://localhost:8080/indexDetail.html'; // redirect to indexDetail.html
         }); // end button 3
 
         $('#button4').on('click', function() { // When the "About this Page" button is clicked,
