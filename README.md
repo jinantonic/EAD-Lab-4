@@ -156,7 +156,7 @@ If you want to remove the product from the list, you can open the product detail
 </br>
 
 ![Sketch](images/pd-msg3.png)</br>
-It will display a success message when there is no error and it will redirect you to the main home page once it's done.
+It will display a **success** message when there is no error and it will redirect you to the main home page once it's done.
 
 </br>
 
