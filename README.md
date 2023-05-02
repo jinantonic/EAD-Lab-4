@@ -113,7 +113,7 @@ Click the **show table** button on the homepage and you can see the new product 
 
 #### Home & About this Page Button
 ![Sketch](images/about.png)
-On the insert product page, the rest buttons are **Home** and **About this Page**. They are pretty straightforward, the **Home** button will bring you to the main page and **About this Page** will bring you to the page that explains briefly about the page.
+On the insert product page, the rest buttons are **Home** and **About this Page**. They are pretty straightforward, the **Home** button will bring you to the main page and the **About this Page** button will bring you to the page that explains briefly about the page.
 
 </br>
 
@@ -167,13 +167,13 @@ Check the result by clicking the **show table** button on the homepage, the prod
 
 #### Insert button
 ![Sketch](images/pd-insert.png)
-**Insert** button also works on this page if the user wants to use the original data of the product or modify it and upload it as a new product.
+**Insert** button also works on this page if the user wants to use the original data of the product or modify it and, upload it as a new product.
 
 </br>
 
 #### Home & About this Page Button
 ![Sketch](images/pd-btns.png)
-The rest buttons are **Home** and **About this Page**. They do the exact same thing as the ones on the insert product page, the **Home** button brings you to the main page and **About this Page** brings you to the About page.
+The rest buttons are **Home** and **About this Page**. They do the exact same thing as the ones on the insert product page, the **Home** button brings you to the main page and the **About this Page** button brings you to the About page.
 
 </br>
 
