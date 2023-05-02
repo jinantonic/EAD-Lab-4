@@ -46,7 +46,6 @@
           
                 $.each(products, function(index, product) { // For each product,
                     const row = `<tr data-productid="${product.id}">
-                                    <td>${product.id}</td>
                                     <td>${product.title}</td>
                                     <td>${product.price}</td>
                                     <td>${product.discountPercentage}</td>
@@ -81,7 +80,6 @@
           
                 $.each(products, function(index, product) {
                     const row = `<tr data-productid="${product.id}">
-                                    <td>${product.id}</td>
                                     <td>${product.title}</td>
                                     <td>${product.price}</td>
                                     <td>${product.discountPercentage}</td>
