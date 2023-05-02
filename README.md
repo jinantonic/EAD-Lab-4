@@ -54,7 +54,7 @@ Clicking the **Show Table** button will retrieve and display all the products al
 </br>
 
 ![Sketch](images/1st-table-row.png)
-By clicking any table row, it will redirect you to the page where you can see all the details of the product of the corresponding row. The arrow buttons below the image will help you navigating the product images. It is handy since it displays the current picture index / total number of picture in the box between those arrow buttons. 
+By clicking any table row, it will redirect you to the page where you can see all the details of the product of the corresponding row. The arrow buttons below the image will help you navigate the product images. It is handy since it displays the current picture index / total number of pictures in the box between those arrow buttons. 
 
 </br>
 
@@ -65,7 +65,7 @@ Moving onto the second button, select one of the radio buttons and enter the cor
 </br>
 
 ![Sketch](images/2nd-table.png)
-Then click the **Search Product** button, it will return the result which have the brand as "Apple".
+Then click the **Search Product** button and it will return the result which has the brand as "Apple".
 
 </br>
 
@@ -87,7 +87,7 @@ Then we move on to the **Insert Product** button, which will direct you to **ind
 
 ### Insert product page
 ![Sketch](images/id-home.png)
-This is the **indexDetail.html** page, which allows users to enter new product to the table.
+This is the **indexDetail.html** page, which allows users to enter new products into the table.
 
 </br>
 
@@ -98,7 +98,7 @@ Enter the details and click **Insert** button.
 
 ![Sketch](images/id-msg1.png)</br>
 ![Sketch](images/id-msg2.png)
-It will displays a success message when there is no error, and an error message if there is an error. After clicking **ok**, it will redirect you to the main home page. 
+It will display a success message when there is no error, and an error message if there is an error. After clicking **ok**, it will redirect you to the main home page. 
 
 </br>
 
@@ -109,7 +109,7 @@ Then click the **show table** button on the homepage and the new product is adde
 
 #### Home & About this Page Button
 ![Sketch](images/about.png)
-On the insert product page, the rest buttons are **Home** and **About this Page**. They are pretty straightfoward, the **Home** button will bring you to the main page and **About this Page** will bring you to the page where explains briefly about the page.
+On the insert product page, the rest buttons are **Home** and **About this Page**. They are pretty straightforward, the **Home** button will bring you to the main page and **About this Page** will bring you to the page that explains briefly about the page.
 
 </br>
 
@@ -125,7 +125,7 @@ This page includes every detail of the product.
 </br>
 
 ![Sketch](images/pd-nav.png)
-The arrow buttons below helps navigating the product images and the text box between those arrows displays the current image index along with the total number of images.
+The arrow buttons below help navigat the product images and the text box between those arrows displays the current image index along with the total number of images.
 
 </br>
 
@@ -137,7 +137,7 @@ Modify any detail of the product and click **Update** button on the left.
 
 ![Sketch](images/pd-msg1.png)</br>
 ![Sketch](images/pd-msg2.png)
-It will displays a success message when there is no error, and an error message if there is an error. After clicking **ok**, it will redirect you to the main home page. 
+It will display a success message when there is no error, and an error message if there is an error. After clicking **ok**, it will redirect you to the main home page. 
 
 </br>
 
@@ -148,12 +148,12 @@ Then click the **show table** button on the homepage and the product is modified
 
 #### Delete Button
 ![Sketch](images/pd-delete.png)
-If you want to remove the product from the list, you can open the product detail by clicking the product's table row and click **Delete** button on the leftside.
+If you want to remove the product from the list, you can open the product detail by clicking the product's table row. And then click **Delete** button on the left side.
 
 </br>
 
 ![Sketch](images/pd-msg3.png)</br>
-It will displays a success message when there is no error and it will redirect you to the main home page once it's done.
+It will display a success message when there is no error and it will redirect you to the main home page once it's done.
 
 </br>
 
@@ -170,7 +170,7 @@ Check the result by clicking the **show table** button on the homepage, the prod
 
 #### Home & About this Page Button
 ![Sketch](images/pd-btns.png)
-The rest buttons are **Home** and **About this Page**. They do the exact same thing as the ones on the insert product page, the **Home** button brings you to the main page and **About this Page** brings you to the about page.
+The rest buttons are **Home** and **About this Page**. They do the exact same thing as the ones on the insert product page, the **Home** button brings you to the main page and **About this Page** brings you to the About page.
 
 </br>
 
