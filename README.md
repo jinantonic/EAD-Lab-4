@@ -1,7 +1,7 @@
 # EAD-Lab-4 - Mongoose and MongoDB
 This assignment is about using **Mongoose** and **MongoDB** to create an online catalogue
-of products.<br><br>
-
+of products.
+<br>
 The catalogue of products can be downloaded from the following URL: https://dummyjson.com/products.<br><br>
 
 
