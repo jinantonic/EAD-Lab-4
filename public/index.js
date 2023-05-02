@@ -1,12 +1,16 @@
 (function ($) {
-    $(document).ready(function() { // When the document is ready
-        $("#display-h2").hide(); // Hide the h2 element
-        $("#table-header").hide(); // Hide the table header
-        $(".input-row").hide();
+    $(document).ready(function() { // When the document is ready,
+        $(".input-row").hide(); // Hide the elements
+        $("#loader").hide();
+        $("#loader-text").hide();
+        $("#display-h4").hide(); 
+        $("#display-h2").hide(); 
+        $("#table-header").hide();
+        
+        let allCheck = false; // Check if the user is searching for all products
 
-        let allCheck = false;
-        $('input[type="radio"]').click(function() {
-            $('.input-row').hide(); // Hide all input rows first
+        $('input[type="radio"]').click(function() { // When a radio button is clicked,
+            $('.input-row').hide();
             
             if($('#radio1').is(':checked')) { // Show input rows based on the selected radio button
                 $('.input-row').show();
@@ -32,14 +36,15 @@
             } else if($('#radio8').is(':checked')) {
                 $('#input-row7').show();
                 allCheck = false;
-            }
-        });
+            } // end if else if
+        }); // end radio click
 
-        function getProduct(searchParams) {
+        function getProduct(searchParams) { // Get the product details from the form
             $.get(`/products?searchParams=${encodeURIComponent(JSON.stringify(searchParams))}&allCheck=${encodeURIComponent(allCheck)}`, function(products) {
-                $("#table-content tbody").empty(); // clear the table content
+                $("#table-content").hide(); // Hide the table until it is fully populated
+                $("#table-content tbody").empty(); // Clear the table content
           
-                $.each(products, function(index, product) {
+                $.each(products, function(index, product) { // for each product,
                     const row = `<tr data-productid="${product.id}">
                                     <td>${product.id}</td>
                                     <td>${product.title}</td>
@@ -50,28 +55,25 @@
                                     <td>${product.brand}</td>
                                     <td>${product.category}</td>
                                     <td><img src="${product.thumbnail}" alt="${product.title}" /></td>
-                                </tr>`;
+                                </tr>`; // create a table row
                     $("#table-content tbody").append(row); // add the row to the table
+                }); // end each
 
-                });
+                $("#table-content tbody").on("click", "tr", function() { // When a table row is clicked,
+                    const productId = $(this).attr("data-productid"); // get the product ID
+                    window.location.href = `indexDetail.html?id=${productId}`; // redirect to productDetail.html with the product ID
+                }); // end tr click
 
-                // When a table row is clicked, redirect to productDetail.html with the corresponding product ID
-                $("#table-content tbody").on("click", "tr", function() {
-                    const productId = $(this).attr("data-productid");
-                    // console.log("productId1: " + productId)
-                    window.location.href = `indexDetail.html?id=${productId}`;
-                });
+            }).fail(function() { // If the product is not found,
+                alert("No product found. Please enter a valid product information."); // alert the user
+                $(location).attr("href", "404.html"); // redirect to 404.html
+            }); // end get
+        } // end getProduct()
 
-
-            }).fail(function() {
-              alert("Product not found!");
-              // $(location).attr("href", "404.html");
-            });
-        }
-
-        function getAllProduct() {
+        function getAllProduct() { // Get all products
             $.get(`/products`, function(products) {
-                $("#table-content tbody").empty(); // clear the table content
+                $("#table-content").hide();
+                $("#table-content tbody").empty();
           
                 $.each(products, function(index, product) {
                     const row = `<tr data-productid="${product.id}">
@@ -86,34 +88,63 @@
                                     <td><img src="${product.thumbnail}" alt="${product.title}" /></td>
                                 </tr>`;
                     $("#table-content tbody").append(row); // add the row to the table
+                }); // end each
 
-                });
-
-                // When a table row is clicked, redirect to productDetail.html with the corresponding product ID
                 $("#table-content tbody").on("click", "tr", function() {
-                    const productId = $(this).attr("data-productid");
-                    // console.log("productId1: " + productId)
-                    window.location.href = `indexDetail.html?id=${productId}`;
-                });
+                    const productId = $(this).attr("data-productid"); // get the product ID
+                    window.location.href = `indexDetail.html?id=${productId}`; // redirect to productDetail.html with the product ID
+                }); // end tr click
 
-            }).fail(function() {
-              alert("Product not found!");
-              // $(location).attr("href", "404.html");
-            });
-        }
+            }).fail(function() { 
+                alert("Product not found!");
+                $(location).attr("href", "404.html");
+            }); // end get
+        } // end getAllProduct()
 
-        $("#button1").click(function() {
-            $("#display-h2").show(); // Show the table header
-            $("#table-header").show(); // Show the table header
+        $("#button1").click(function() { // When the "Show Table" button is clicked,
+            $("#loader").show(); // Show the elements
+            $("#loader-text").show();
 
-            getAllProduct();
-        });
+            setTimeout(function() {
+                $("#display-h4").show(); 
+            }, 500); // end setTimeout
+            
+            setTimeout(function() { // Fade in the h2 & table 
+                $("#display-h2").fadeIn();
+                $("#table-header").fadeIn();
+                $("#table-content").fadeIn();
+            }, 1000); // end setTimeout
+
+            setTimeout(function() { // Hide the loader & h4
+                $("#loader").hide();
+                $("#loader-text").hide();
+                $("#display-h4").hide();
+            }, 1000); // end setTimeout
+
+            getAllProduct(); // Get all products
+        }); // end button 1
 
         $("#button2").click(function() {
-            $("#display-h2").show(); // Show the table header
-            $("#table-header").show(); // Show the table header
+            $("#loader").show();
+            $("#loader-text").show();
+
+            setTimeout(function() {
+                $("#display-h4").show();
+            }, 500); // end setTimeout
             
-            const searchParams = {
+            setTimeout(function() {  
+                $("#display-h2").fadeIn();
+                $("#table-header").fadeIn();
+                $("#table-content").fadeIn();
+            }, 1000); // end setTimeout
+
+            setTimeout(function() {
+                $("#loader").hide();
+                $("#loader-text").hide();
+                $("#display-h4").hide();
+            }, 1000); // end setTimeout
+            
+            const searchParams = { // Get the search parameters from the form
                 title: $("#title").val(),
                 category: $("#category").val(),
                 price: $("#price").val(),
@@ -121,17 +152,17 @@
                 rating: $("#rating").val(),
                 stock: $("#stock").val(),
                 brand: $("#brand").val(),
-            }; 
+            }; // end searchParams
             
-            getProduct(searchParams);
-        });
+            getProduct(searchParams); // Get the product details from the form
+        }); // end button 2
         
-        $('#button3').on('click', function() {
-            window.location.href = 'http://localhost:8080/indexDetail.html';
-        });
+        $('#button3').on('click', function() { // When the "Insert Product" button is clicked,
+            window.location.href = 'http://localhost:8080/indexDetail.html'; // redirect to productDetail.html
+        }); // end button 3
 
-        $('#button4').on('click', function() {
-            window.location.href = 'http://localhost:8080/about.html';
-        });  
+        $('#button4').on('click', function() { // When the "About this Page" button is clicked,
+            window.location.href = 'http://localhost:8080/about.html'; // redirect to about.html
+        }); // end button 4
     }); // End document ready
 })(jQuery); // End jQuery
