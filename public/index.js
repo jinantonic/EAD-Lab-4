@@ -1,134 +1,137 @@
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-let currentId = 0;
+(function ($) {
+    $(document).ready(function() { // When the document is ready
+        $("#display-h2").hide(); // Hide the h2 element
+        $("#table-header").hide(); // Hide the table header
+        $(".input-row").hide();
 
-mongoose.connect('mongodb://127.0.0.1:27017/products', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        Product.findOne({}, {}, { sort: { '_id' : -1 } })
-        .then(product => { currentId = product.id; })
-    })
-    .catch(err => console.error('Error connecting to MongoDB:', err));
-
-const ProductSchema = new mongoose.Schema({
-    id: Number,
-    title: String,
-    description: String,
-    price: Number,
-    discountPercentage: Number,
-    rating: Number,
-    stock: Number,
-    brand: String,
-    category: String,
-    thumbnail: String,
-    images: [String]
-});
-
-const Product = mongoose.model('Product', ProductSchema);
-
-app.use(express.urlencoded({
-    extended: true
-}))
-
-app.use(express.static('public'));
-app.use(express.json());
-
-
-app.get('/products', async (req, res) => {
-    try {
-        let query = {};
-        if(req.query["searchParams"]) {
-            const productFilter = JSON.parse(decodeURIComponent(req.query["searchParams"]));
-            // console.log(productFilter);
+        let allCheck = false;
+        $('input[type="radio"]').click(function() {
+            $('.input-row').hide(); // Hide all input rows first
             
-            if (req.query["allCheck"] === 'true') {
-                const andFilter = [];
-                if (productFilter.title !== '') { andFilter.push({ title: { $regex: productFilter.title, $options: "i" }}); }
-                if (productFilter.category !== '') { andFilter.push({ category: { $regex: productFilter.category, $options: "i" }}); }
-                if (productFilter.price !== '') { andFilter.push({ price: { $lte: productFilter.price }}); }
-                if (productFilter.discountPercentage !== '') { andFilter.push({ discountPercentage: { $gte: productFilter.discountPercentage }}); }
-                if (productFilter.rating !== '') { andFilter.push({ rating: { $gte: productFilter.rating }}); }
-                if (productFilter.stock !== '') { andFilter.push({ stock: { $gte: productFilter.stock }}); }
-                if (productFilter.brand !== '') { andFilter.push({ brand: { $regex: productFilter.brand, $options: "i" }}); }
-                query = { $and: andFilter };
-                
-            } else if (productFilter.brand !== '') {
-                query = { brand: { $regex: productFilter.brand, $options: "i" }};
-            } else if (productFilter.category !== '') {
-                query = { category: { $regex: productFilter.category, $options: "i" }};
-            } else if (productFilter.title !== '') {
-                query = { title: { $regex: productFilter.title, $options: "i" }};
-            } else if (productFilter.price !== '') {
-                query = { price: { $lte: productFilter.price }}; // smaller than
-            } else if (productFilter.discountPercentage !== '') {
-                query = { discountPercentage: { $gte: productFilter.discountPercentage }};
-            } else if (productFilter.rating !== '') {
-                query = { rating: { $gte: productFilter.rating }};
-            } else if (productFilter.stock !== '') {
-                query = { stock: { $gte: productFilter.stock }};
+            if($('#radio1').is(':checked')) { // Show input rows based on the selected radio button
+                $('.input-row').show();
+                allCheck = true;
+            } else if($('#radio2').is(':checked')) {
+                $('#input-row1').show();
+                allCheck = false;
+            } else if($('#radio3').is(':checked')) {
+                $('#input-row2').show();
+                allCheck = false;
+            } else if($('#radio4').is(':checked')) {
+                $('#input-row3').show();
+                allCheck = false;
+            } else if($('#radio5').is(':checked')) {
+                $('#input-row4').show();
+                allCheck = false;
+            } else if($('#radio6').is(':checked')) {
+                $('#input-row5').show();
+                allCheck = false;
+            } else if($('#radio7').is(':checked')) {
+                $('#input-row6').show();
+                allCheck = false;
+            } else if($('#radio8').is(':checked')) {
+                $('#input-row7').show();
+                allCheck = false;
             }
-        } else if (req.query["productId"]) {
-            if (req.query["productId"] !== '') {
-                
-                query = {id:req.query["productId"]};
-                console.log(query);
-            }
+        });
+
+        function getProduct(searchParams) {
+            $.get(`/products?searchParams=${encodeURIComponent(JSON.stringify(searchParams))}&allCheck=${encodeURIComponent(allCheck)}`, function(products) {
+                $("#table-content tbody").empty(); // clear the table content
+          
+                $.each(products, function(index, product) {
+                    const row = `<tr data-productid="${product.id}">
+                                    <td>${product.id}</td>
+                                    <td>${product.title}</td>
+                                    <td>${product.price}</td>
+                                    <td>${product.discountPercentage}</td>
+                                    <td>${product.rating}</td>
+                                    <td>${product.stock}</td>
+                                    <td>${product.brand}</td>
+                                    <td>${product.category}</td>
+                                    <td><img src="${product.thumbnail}" alt="${product.title}" /></td>
+                                </tr>`;
+                    $("#table-content tbody").append(row); // add the row to the table
+
+                });
+
+                // When a table row is clicked, redirect to productDetail.html with the corresponding product ID
+                $("#table-content tbody").on("click", "tr", function() {
+                    const productId = $(this).attr("data-productid");
+                    // console.log("productId1: " + productId)
+                    window.location.href = `indexDetail.html?id=${productId}`;
+                });
+
+
+            }).fail(function() {
+              alert("Product not found!");
+              // $(location).attr("href", "404.html");
+            });
         }
 
-        const products = await Product.find(query);
-        res.json(products);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Internal server error!');
-    }
-});
+        function getAllProduct() {
+            $.get(`/products`, function(products) {
+                $("#table-content tbody").empty(); // clear the table content
+          
+                $.each(products, function(index, product) {
+                    const row = `<tr data-productid="${product.id}">
+                                    <td>${product.id}</td>
+                                    <td>${product.title}</td>
+                                    <td>${product.price}</td>
+                                    <td>${product.discountPercentage}</td>
+                                    <td>${product.rating}</td>
+                                    <td>${product.stock}</td>
+                                    <td>${product.brand}</td>
+                                    <td>${product.category}</td>
+                                    <td><img src="${product.thumbnail}" alt="${product.title}" /></td>
+                                </tr>`;
+                    $("#table-content tbody").append(row); // add the row to the table
 
-app.post('/products', async (req, res) => {
-    try {
-        const product = {
-            id: ++currentId,
-            ...req.body
-        };
-        Product.create(product);
-        res.status(201).json({ uri: `/products/${product._id}` });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Internal server error!');
-    }
-});
+                });
 
-app.put('/products', async (req, res) => {
-    try {
-        const productId = JSON.parse(decodeURIComponent(req.query["id"]));
-        console.log("Test  " + productId);
-        console.log(req.body);
-        const result = await Product.findOneAndUpdate(
-            {id:productId},
-            req.body
-        );
+                // When a table row is clicked, redirect to productDetail.html with the corresponding product ID
+                $("#table-content tbody").on("click", "tr", function() {
+                    const productId = $(this).attr("data-productid");
+                    // console.log("productId1: " + productId)
+                    window.location.href = `indexDetail.html?id=${productId}`;
+                });
 
-        
-        res.json({ uri: `/products/${req.params.id}` });
+            }).fail(function() {
+              alert("Product not found!");
+              // $(location).attr("href", "404.html");
+            });
+        }
+
+        $("#button1").click(function() {
+            $("#display-h2").show(); // Show the table header
+            $("#table-header").show(); // Show the table header
+
+            getAllProduct();
+        });
+
+        $("#button2").click(function() {
+            $("#display-h2").show(); // Show the table header
+            $("#table-header").show(); // Show the table header
             
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Internal server error!');
-    }
-});
-
-app.delete('/products/:id', async (req, res) => {
-    try {
-        const result = await Product.findOneAndDelete({ id: req.params.id });
+            const searchParams = {
+                title: $("#title").val(),
+                category: $("#category").val(),
+                price: $("#price").val(),
+                discountPercentage: $("#discount").val(),
+                rating: $("#rating").val(),
+                stock: $("#stock").val(),
+                brand: $("#brand").val(),
+            }; 
+            
+            getProduct(searchParams);
+        });
         
-        res.sendStatus(204);
+        $('#button3').on('click', function() {
+            window.location.href = 'http://localhost:8080/indexDetail.html';
+        });
 
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Internal server error!');
-    }
-});
-
-const port = 8080;
-app.listen(port, () => {
-    console.log(`Server running on port ${port}.`);
-});
+        $('#button4').on('click', function() {
+            window.location.href = 'http://localhost:8080/about.html';
+        });  
+    }); // End document ready
+})(jQuery); // End jQuery

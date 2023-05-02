@@ -2,7 +2,7 @@
   "name": "ead-lab-4",
   "version": "1.0.0",
   "description": "This assignment is about using **Mongoose** and **MongoDB** to create an online catalogue of products.<br><br>",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
