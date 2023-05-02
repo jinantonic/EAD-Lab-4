@@ -10,6 +10,7 @@
         $("#btn3").hide(); 
         $("#imageLabel").hide();
         $("#display-product").hide();
+        $(".nav-box").hide();
 
         if(productId) { // If the product ID is present in the URL parameters,
             editCheck = true; 
@@ -33,6 +34,7 @@
                 $("#btn4").show();
                 $("#imageLabel").show();
                 $("#display-product").show();
+                $(".nav-box").show();
 
             }).fail(function(xhr, status, error) { // If the product is not found,
                 $(location).attr('href','404.html'); // Redirect to the 404 page

@@ -46,7 +46,8 @@ Clicking the **All** radio button enables users to search for products that meet
 
 </br>
 
-### 1st Button
+### Homepage
+#### Show Table Button
 ![Sketch](images/1st.png)
 ![Sketch](images/1st-table.png)
 Clicking the **Show Table** button will retrieve and display all the products along with their information on the table.
@@ -58,7 +59,7 @@ By clicking any table row, it will redirect you to the page where you can see al
 
 </br>
 
-### 2nd Button
+#### Search Product Button
 ![Sketch](images/2nd.png)
 Moving onto the second button, select one of the radio buttons and enter the corresponding input text. 
 
@@ -70,7 +71,7 @@ Then click the **Search Product** button, it will return the result which have t
 </br>
 
 ![Sketch](images/2nd-table2.png)
-It allows the users to search for products using multiple search options. 
+It also allows the users to search for products using multiple search options by clicking **All** button. 
 
 </br>
 
@@ -79,9 +80,13 @@ As you can see, it is returning the correct result of products whose Brand conta
 
 </br>
 
-### 3rd Button
+#### Insert Product Button
 ![Sketch](images/3rd.png)
-Then we move on to the **Insert Product** button. Enter the new colour details such as hexString, RGB, HSL and Name, and click the **Modify Colour** button.
+![Sketch](images/3rd-page.png)
+Then we move on to the **Insert Product** button, which will direct you to **indexDetail.html** page.
+
+### Insert product page
+
 
 </br>
 
