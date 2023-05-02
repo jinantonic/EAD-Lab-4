@@ -102,12 +102,12 @@ Enter the details and click **Insert** button.
 </br>
 
 ![Sketch](images/id-msg1.png)![Sketch](images/id-msg2.png)</br>
-It will display a success message when there is no error, and an error message if there is an error. After clicking **ok**, it will redirect you to the main home page. 
+It will display a **success** message when there is no error, and an **error** message if there is an error. After clicking **ok**, it will redirect you to the main home page. 
 
 </br>
 
 ![Sketch](images/id-result.png)
-Then click the **show table** button on the homepage and the new product is added to the end of the table.
+Click the **show table** button on the homepage and you can see the new product is added to the end of the table.
 
 </br>
 
@@ -128,8 +128,8 @@ This page includes every detail of the product.
 
 </br>
 
-![Sketch](images/pd-nav.png)
-The arrow buttons below help navigat the product images and the text box between those arrows displays the current image index along with the total number of images.
+![Sketch](images/pd-nav.png)</br>
+The arrow buttons below help navigate the product images and the text box between those arrows displays the current image index along with the total number of images.
 
 </br>
 
@@ -139,9 +139,8 @@ Modify any detail of the product and click **Update** button on the left.
 
 </br>
 
-![Sketch](images/pd-msg1.png)</br>
-![Sketch](images/pd-msg2.png)
-It will display a success message when there is no error, and an error message if there is an error. After clicking **ok**, it will redirect you to the main home page. 
+![Sketch](images/pd-msg1.png)![Sketch](images/pd-msg2.png)</br>
+It will display a **success** message when there is no error, and an **error** message if there is an error. After clicking **ok**, it will redirect you to the main home page. 
 
 </br>
 
