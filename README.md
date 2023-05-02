@@ -16,7 +16,7 @@ This file contains clearer instructions on how to navigate my website and the pa
 
 ## My solution
 ![Sketch](images/port.png)
-In the **server.js** file, the port number is set as 8080.
+In the **server.js** file, the port number is set as **8080**.
 
 </br>
 
@@ -25,7 +25,7 @@ Run **node public/server.js** on the terminal and check if a node server is runn
 
 </br>
 
-![Sketch](images/localhost.png)
+![Sketch](images/localhost.png)</br>
 Once it is running successfully, go to http://localhost:8080/index.html on the browser to see the website.
 
 </br>
