@@ -31,7 +31,7 @@ Once it is running successfully, go to http://localhost:8080/index.html on the b
 </br>
 
 ![Sketch](images/home.png)
-This is the first look of the website. The main page consists of **4 buttons** on the left side, and the **radio buttons** on the right side. 
+This is the first look at the website. The main page consists of **4 buttons** on the left side, and the **8 radio buttons** on the right side. 
 
 </br>
 
