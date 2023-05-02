@@ -24,9 +24,9 @@
                 <button id = "btn1">Home</button>
                 <button id = "btn2">Update</button>
                 <button id = "btn3">Delete</button>
-                <button id = "btn6">Insert</button>
-                <button id = "btn2">Retrieve</button>
-                <button id = "btn5">About this page</button>
+                <button id = "btn4">Insert</button>
+                <!-- <button id = "btn5">Retrieve</button> -->
+                <button id = "btn6">About this page</button>
             </div> <!-- End of button-container -->
 
             <div class = "input-container">
@@ -64,9 +64,18 @@
                         <input type = "stock" id = "stock" name = "stock"  maxlength = "10" required>
                     </div>
                     <div class = "input-rows">
+                        <label for = "thumbnail">Thumbnail :</label>
+                        <input type = "thumbnail" id = "thumbnail" name = "thumbnail" required>
+                    </div>
+                    <div class = "input-rows">
+                        <label for = "imageText">Image Text :</label>
+                        <input type = "imageText" id = "imageText" name = "imageText" required>
+                    </div>
+                    <div class = "input-rows">
                         <label for = "rating">Rating :</label>
                         <input type = "rating" id = "rating" name = "rating" maxlength = "10" required>
                     </div>
+                    
                     <div class = "input-rows">
                         <label for = "Image">Image :</label>
                         <img class = "display-product" id = "display-product"></img>
@@ -74,15 +83,13 @@
                 </div> <!-- End of input-box -->
 
                 <div class = "nav-box">
-                    <button class="nav-btn" id="btnFirst">&laquo;&laquo;</button>
+                    <!-- <button class="nav-btn" id="btnFirst">&laquo;&laquo;</button> -->
                     <button class = "nav-btn" id = "btnPrev">&laquo;</button>
                     <input type = "text" id = "productIdNav" name = "productIdNav" placeholder = "ProductId" maxlength = "5" required>
                     <button class = "nav-btn" id = "btnNext">&raquo;</button>
-                    <button class="nav-btn" id="btnLast">&raquo;&raquo;</button>
+                    <!-- <button class="nav-btn" id="btnLast">&raquo;&raquo;</button> -->
                 </div> <!-- End of nav-box -->
             </div> <!-- End of input-container -->
         </div> <!-- End of grid-container -->
-
-        
     </body>
 </html>

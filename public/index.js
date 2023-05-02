@@ -26,41 +26,54 @@ const ProductSchema = new mongoose.Schema({
 
 const Product = mongoose.model('Product', ProductSchema);
 
+app.use(express.urlencoded({
+    extended: true
+}))
+
 app.use(express.static('public'));
 app.use(express.json());
 
 
 app.get('/products', async (req, res) => {
     try {
-        const productFilter = JSON.parse(decodeURIComponent(req.query["searchParams"]));
-        console.log(productFilter);
         let query = {};
-        if (req.query["allCheck"] === 'true') {
-            const andFilter = [];
-            if (productFilter.title !== '') { andFilter.push({ title: { $regex: productFilter.title, $options: "i" }}); }
-            if (productFilter.category !== '') { andFilter.push({ category: { $regex: productFilter.category, $options: "i" }}); }
-            if (productFilter.price !== '') { andFilter.push({ price: { $lte: productFilter.price }}); }
-            if (productFilter.discountPercentage !== '') { andFilter.push({ discountPercentage: { $gte: productFilter.discountPercentage }}); }
-            if (productFilter.rating !== '') { andFilter.push({ rating: { $gte: productFilter.rating }}); }
-            if (productFilter.stock !== '') { andFilter.push({ stock: { $gte: productFilter.stock }}); }
-            if (productFilter.brand !== '') { andFilter.push({ brand: { $regex: productFilter.brand, $options: "i" }}); }
-            query = { $and: andFilter };
+        if(req.query["searchParams"]) {
+            const productFilter = JSON.parse(decodeURIComponent(req.query["searchParams"]));
+            // console.log(productFilter);
             
-        } else if (productFilter.brand !== '') {
-            query = { brand: { $regex: productFilter.brand, $options: "i" }};
-        } else if (productFilter.category !== '') {
-            query = { category: { $regex: productFilter.category, $options: "i" }};
-        } else if (productFilter.title !== '') {
-            query = { title: { $regex: productFilter.title, $options: "i" }};
-        } else if (productFilter.price !== '') {
-            query = { price: { $lte: productFilter.price }}; // smaller than
-        } else if (productFilter.discountPercentage !== '') {
-            query = { discountPercentage: { $gte: productFilter.discountPercentage }};
-        } else if (productFilter.rating !== '') {
-            query = { rating: { $gte: productFilter.rating }};
-        } else if (productFilter.stock !== '') {
-            query = { stock: { $gte: productFilter.stock }};
-        } 
+            if (req.query["allCheck"] === 'true') {
+                const andFilter = [];
+                if (productFilter.title !== '') { andFilter.push({ title: { $regex: productFilter.title, $options: "i" }}); }
+                if (productFilter.category !== '') { andFilter.push({ category: { $regex: productFilter.category, $options: "i" }}); }
+                if (productFilter.price !== '') { andFilter.push({ price: { $lte: productFilter.price }}); }
+                if (productFilter.discountPercentage !== '') { andFilter.push({ discountPercentage: { $gte: productFilter.discountPercentage }}); }
+                if (productFilter.rating !== '') { andFilter.push({ rating: { $gte: productFilter.rating }}); }
+                if (productFilter.stock !== '') { andFilter.push({ stock: { $gte: productFilter.stock }}); }
+                if (productFilter.brand !== '') { andFilter.push({ brand: { $regex: productFilter.brand, $options: "i" }}); }
+                query = { $and: andFilter };
+                
+            } else if (productFilter.brand !== '') {
+                query = { brand: { $regex: productFilter.brand, $options: "i" }};
+            } else if (productFilter.category !== '') {
+                query = { category: { $regex: productFilter.category, $options: "i" }};
+            } else if (productFilter.title !== '') {
+                query = { title: { $regex: productFilter.title, $options: "i" }};
+            } else if (productFilter.price !== '') {
+                query = { price: { $lte: productFilter.price }}; // smaller than
+            } else if (productFilter.discountPercentage !== '') {
+                query = { discountPercentage: { $gte: productFilter.discountPercentage }};
+            } else if (productFilter.rating !== '') {
+                query = { rating: { $gte: productFilter.rating }};
+            } else if (productFilter.stock !== '') {
+                query = { stock: { $gte: productFilter.stock }};
+            }
+        } else if (req.query["productId"]) {
+            if (req.query["productId"] !== '') {
+                
+                query = {id:req.query["productId"]};
+                console.log(query);
+            }
+        }
 
         const products = await Product.find(query);
         res.json(products);
@@ -84,17 +97,19 @@ app.post('/products', async (req, res) => {
     }
 });
 
-app.put('/products/:id', async (req, res) => {
+app.put('/products', async (req, res) => {
     try {
+        const productId = JSON.parse(decodeURIComponent(req.query["id"]));
+        console.log("Test  " + productId);
+        console.log(req.body);
         const result = await Product.findOneAndUpdate(
-            { _id: req.params.id },
+            {id:productId},
             req.body
         );
-        if (result.modifiedCount === 1) {
-            res.json({ uri: `/products/${req.params.id}` });
-        } else {
-            res.status(404).send('Product not found!');
-        }
+
+        
+        res.json({ uri: `/products/${req.params.id}` });
+            
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error!');
@@ -103,13 +118,10 @@ app.put('/products/:id', async (req, res) => {
 
 app.delete('/products/:id', async (req, res) => {
     try {
-        const result = await Product.findOneAndDelete({ _id: req.params.id });
-        if (result.deletedCount === 1) {
-            currentId--;
-            res.sendStatus(204);
-        } else {
-            res.status(404).send('Product not found!');
-        }
+        const result = await Product.findOneAndDelete({ id: req.params.id });
+        
+        res.sendStatus(204);
+
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error!');

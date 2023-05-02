@@ -85,13 +85,10 @@
             getProduct(searchParams);
         });
           
-        $('#btn2').on('click', function() {
-        });
 
-        $('#btn3').on('click', function() {
-        });
 
-        $('#btn4').on('click', function() {
+        $('#btn6').on('click', function() {
+            window.location.href = 'http://localhost:8080/productDetail.html';
         });
 
         $('#btn5').on('click', function() {
