@@ -54,7 +54,7 @@ Clicking the **Show Table** button will retrieve and display all the products al
 </br>
 
 ![Sketch](images/1st-table-row.png)
-By clicking any table row, it will redirect you to the page where you can see all the details of the product of the corresponding row. The arrow buttons below the image will help you navigate the product images. It is handy since it displays the current picture index / total number of pictures in the box between those arrow buttons. 
+By clicking any **table row**, it will redirect you to the page where you can see all the details of the product of the corresponding row. The arrow buttons below the image will help you navigate the product images. It is handy since it displays the current picture index / total number of pictures in the box between those arrow buttons. 
 
 </br>
 
@@ -80,7 +80,7 @@ As you can see, it is returning the correct result of products whose Brand conta
 </br>
 
 ![Sketch](images/2nd-table4.png)
-If there is no matching product, it displays an error message along with the empty table below.
+If there is no matching product, it displays an error message along with the empty table result below.
 
 </br>
 
@@ -101,8 +101,7 @@ Enter the details and click **Insert** button.
 
 </br>
 
-![Sketch](images/id-msg1.png)</br>
-![Sketch](images/id-msg2.png)
+![Sketch](images/id-msg1.png)![Sketch](images/id-msg2.png)</br>
 It will display a success message when there is no error, and an error message if there is an error. After clicking **ok**, it will redirect you to the main home page. 
 
 </br>
