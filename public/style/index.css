@@ -82,7 +82,7 @@ h4 {
 .radio-box {
     align-items: center;
     width: 100%;
-    padding: 30px 55px 30px; /* Top, Right & Left, Bottom */
+    padding: 70px 80px 30px; /* Top, Right & Left, Bottom */
 }
 
 .radio-box input, .radio-box label {

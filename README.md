@@ -17,12 +17,12 @@ This file contains clearer instructions on how to navigate my website and the pa
 
 ## My solution
 ![Sketch](images/port.png)
-In the **index.js** file, the port number is set as 8080.
+In the **server.js** file, the port number is set as 8080.
 
 </br>
 
 ![Sketch](images/node.png)
-Run **node public/index.js** on the terminal and check if a node server is running.
+Run **node public/server.js** on the terminal and check if a node server is running.
 
 </br>
 
