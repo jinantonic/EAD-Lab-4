@@ -121,88 +121,63 @@ Going back to the main page, clicking the table row will bring you to the produc
 </br>
 
 ![Sketch](images/pd-detail.png)</br>
-After you get the success message, you can **refresh** the homepage and click **Show Table**.
+This page includes every detail of the product.
 
 </br>
 
-![Sketch](images/4th-olive-1.png)
-![Sketch](images/4th-olive-2.png)
-You can see the colour **Olive** was removed. If I remove a colour, the corresponding table row will be removed from the table.
+![Sketch](images/pd-nav.png)
+The arrow buttons below helps navigating the product images and the text box between those arrows displays the current image index along with the total number of images.
 
 </br>
 
-### 5th Button
-![Sketch](images/5th.png)
-Then we move on to the **Clear** button. It clears all the input fields and the display box of the colour, which allows the users to enter the new inputs without manually deleting the previous inputs.
+#### Update Button
+![Sketch](images/pd-update.png)
+Modify any detail of the product and click **Update** button on the left. 
 
 </br>
 
-![Sketch](images/5th-clear.png)
-As you can see, all the input fields and the display box is empty.
+![Sketch](images/pd-msg1.png)</br>
+![Sketch](images/pd-msg2.png)
+It will displays a success message when there is no error, and an error message if there is an error. After clicking **ok**, it will redirect you to the main home page. 
 
 </br>
 
-### 6th Button
-![Sketch](images/6th.png)
-Moving onto the **Select Background** button. Enter the colour id and select the **Show Colour** button to display the colour. Check the displayed colour and click the **Select Background** button to choose it as a background.  
+![Sketch](images/pd-result.png)
+Then click the **show table** button on the homepage and the product is modified using the new details.
 
 </br>
 
-![Sketch](images/6th-bg.png)
-As you can see, it retrieves the colour details with the specified colour id and sets the
-background colour of the entire page to that colour.
+#### Delete Button
+![Sketch](images/pd-delete.png)
+If you want to remove the product from the list, you can open the product detail by clicking the product's table row and click **Delete** button on the leftside.
 
 </br>
 
-### Cookie
-![Sketch](images/6th-bg.png)
-One of the important features here is the **cookie**, when a user selects a colour or sets a colour as a background, the colour’s id is stored in a cookie (colourId) with an expiration data set far in the future. This allows the code to remember the selected colour even if the user refreshes or navigates away from the page. As you can see in the screenshot above, it still remembers the colour details and the background colour after refreshing the page.
+![Sketch](images/pd-msg3.png)</br>
+It will displays a success message when there is no error and it will redirect you to the main home page once it's done.
 
 </br>
 
-### 7th Button
-![Sketch](images/7th.png)
-Then we move on to the **Show Table** button. This button has been interacting with other buttons above, this will retrieve all the colours and display them on a table.
+![Sketch](images/pd-result2.png)
+Check the result by clicking the **show table** button on the homepage, the product is successfully removed from the list.
 
 </br>
 
-![Sketch](images/7th-table.png)
-You can see all the changes made by using the table below. **Refreshing the page** will keep updating the changes made on the table.
+#### Insert button
+![Sketch](images/pd-insert.png)
+**Insert** button also works on this page if the user wants to use the original data of the product or modify it and upload it as a new product.
 
 </br>
 
-### 8th Button
-![Sketch](images/8th.png)
-Moving onto the **Reset Table** button. This button will reset the colours table to its default state. Click the **Reset Table** button.
-
-</br>
-
-![Sketch](images/8th-msg.png)</br>
-After you get the success message, click the **Show Table** button.
-
-</br>
-
-![Sketch](images/8th-table-1.png)
-![Sketch](images/8th-table-2.png)
-You can see all the contents are reverted to their original state.
-
-</br>
-
-### Left & Right arrow buttons and the input box
-![Sketch](images/lr.png)</br>
-**Left** and **Right arrow** buttons are used for navigating, and the **input box** in the middle is to allow the users to enter colour id manually.
-
-</br>
-
-![Sketch](images/lr-2.png)
-After you enter the colour id in the box and press the **Enter Key**, it will display the colour corresponding to the colour id that you entered. It is easier and quicker to enter it manually than clicking the **Show Colour** button every time you would like to search for a colour.
+#### Home & About this Page Button
+![Sketch](images/pd-btns.png)
+The rest buttons are **Home** and **About this Page**. They do the exact same thing as the ones on the insert product page, the **Home** button brings you to the main page and **About this Page** brings you to the about page.
 
 </br>
 
 ### 404 page
 ![Sketch](images/404.png)
 This is a custom HTML page for a **404 error**. If the user types a wrong address, this page will get displayed indicating that the error has been made, and the user can go back to the main page by clicking the **homepage**.
-
 
 </br></br>
 
