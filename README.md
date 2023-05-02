@@ -53,25 +53,35 @@ Clicking the **Show Table** button will retrieve and display all the products al
 
 </br>
 
-### 2nd Button
-![Sketch](images/2nd.png)
-Moving onto the second button, enter the new colour details such as hexString, RGB, HSL and Name, and click the **Insert Colour** button. If I insert the new colour, the new row will be appended to the end of the table. 
+![Sketch](images/1st-table-row.png)
+By clicking any table row, it will redirect you to the page where you can see all the details of the product of the corresponding row. The arrow buttons below the image will help you navigating the product images. It is handy since it displays the current picture index / total number of picture in the box between those arrow buttons. 
 
 </br>
 
-![Sketch](images/2nd-msg.png)</br>
-After you get the success message, you can **refresh** the homepage and click **Show Table**. 
+### 2nd Button
+![Sketch](images/2nd.png)
+Moving onto the second button, select one of the radio buttons and enter the corresponding input text. 
 
 </br>
 
 ![Sketch](images/2nd-table.png)
-You can see the new colour **SteelBlueBlues** was added to the table along with the success message.
+Then click the **Search Product** button, it will return the result which have the brand as "Apple".
+
+</br>
+
+![Sketch](images/2nd-table2.png)
+It allows the users to search for products using multiple search options. 
+
+</br>
+
+![Sketch](images/2nd-table3.png)
+As you can see, it is returning the correct result of products whose Brand contains "App", Category contains "Sm" and the Price is less than 900. 
 
 </br>
 
 ### 3rd Button
 ![Sketch](images/3rd.png)
-Then we move on to the **Modify Colour** button. Enter the new colour details such as hexString, RGB, HSL and Name, and click the **Modify Colour** button.
+Then we move on to the **Insert Product** button. Enter the new colour details such as hexString, RGB, HSL and Name, and click the **Modify Colour** button.
 
 </br>
 
