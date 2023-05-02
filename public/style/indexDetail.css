@@ -1,0 +1,139 @@
+body {
+    font-family: 'Mulish', sans-serif;
+    background-color: #F2F2F2;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-style: Bold;
+    font-weight: 700;
+    font-size: 40px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #495464;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+}
+
+h2 {
+    font-family: 'Raleway', sans-serif;
+    font-style: Bold;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #06283D;
+    margin-top: 50px;
+}
+
+.detail-grid-container {
+    display: grid;
+    grid-template-columns: 20% 76%; /* detail-button-container is 20%, detail-input-container is 76% */
+    grid-gap: 20px; /* add some space between the columns */
+}
+  
+.detail-button-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+#btn1, #btn2, #btn3, #btn4, #btn5 {
+    font-size: 13px;
+    background-color: #6C7A89;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 45px;
+    margin-left: 3px;
+    margin-bottom: 10px;
+    padding: 7px 5px; /* Top & Bottom, Right & Left */
+}
+
+#btn1:hover, #btn2:hover, #btn3:hover, #btn4:hover, #btn5:hover {
+    background-color: #D3D6DB;
+    color: #6C7A89;
+}
+
+.detail-input-container {
+    display: flex;
+    position: relative; 
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid #495464;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.detail-input-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px 50px 30px; /* Top, Right & Left, Bottom */
+}
+  
+.detail-input-row { 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+  
+.detail-input-row label {
+    margin-right: 10px;
+    flex-basis: 38%; /* Set the label's width to 38% */
+}
+  
+.detail-input-row input {
+    flex-grow: 1; /* Allow the input to grow to fill remaining space */
+    height: 25px;
+}
+
+#row-thumbnail, #row-imageText {
+    display: none;
+}
+
+.display-product {
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 348px;
+    height: 348px;
+    margin-bottom: 10px;
+}
+
+.nav-box {
+    display: flex;
+    position: absolute; 
+    align-items: center;
+    justify-content: center;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    margin-bottom: 10px;
+    margin-left: 150px;
+}
+  
+.nav-btn {
+    margin: 0 5px;
+}
+
+#btnPrev, #btnNext {
+    background-color: #a8b2bd;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 2px 7px; /* Top & Bottom, Right & Left  */
+}
+
+#btnPrev:hover, #btnNext:hover {
+    background-color: #D3D6DB;
+    color: #a8b2bd;
+}
+
+#productIdNav {
+    text-align: center;
+    width: 50px;
+    margin: 0 5px;
+}
